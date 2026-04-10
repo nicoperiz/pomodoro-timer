@@ -1,36 +1,27 @@
-# 🍅 Professional Pomodoro Timer
+# 🍅 Pomodoro Timer
 
-A sleek, functional, and high-performance Pomodoro Timer built with vanilla web technologies. This project focuses on clean state management, precise asynchronous logic, and modern UI/UX principles.
+A sleek, functional Pomodoro Timer built with vanilla web technologies. Focuses on clean state management, precise timing logic, and modern UI/UX principles.
 
+## 🚀 Live Demo
+[https://nicoperiz.github.io/pomodoro-timer/](https://nicoperiz.github.io/pomodoro-timer/)
 
-
-## 🚀 Features
-
-- **Dynamic Countdown**: A precise timer engine built with JavaScript `setInterval`.
-- **Circular Progress Bar**: Interactive SVG-based visual feedback that depletes as time passes.
-- **State Management**: Automatic toggling between "Work" and "Break" sessions.
-- **Persistence**: Integration with **Local Storage** to save user preferences (session durations).
-- **Audio Notifications**: High-quality audio alerts upon session completion.
-- **Responsive UI**: Fully responsive design with modern CSS (Flexbox, CSS Variables).
-- **Browser Integration**: Real-time timer updates in the browser tab title.
+## ✨ Features
+- **Circular Progress Bar**: SVG-based visual feedback that depletes as time passes
+- **Auto Session Switch**: Automatic toggling between Work and Break sessions
+- **Dark Mode**: Toggle with preference saved in LocalStorage
+- **Persistence**: LocalStorage saves user preferences across browser refreshes
+- **Audio Notifications**: Audio alert on session completion
+- **Tab Title Update**: Real-time timer displayed in the browser tab
+- **Responsive UI**: Clean design with CSS Variables and Flexbox
 
 ## 🛠️ Tech Stack
+- **HTML5**
+- **CSS3** (Custom Properties, SVG animations, Flexbox)
+- **JavaScript (ES6+)** (DOM manipulation, LocalStorage API, setInterval)
 
-- **HTML5**: Semantic structure.
-- **CSS3**: Custom properties (variables), SVG animations, and Flexbox.
-- **JavaScript (ES6+)**: DOM manipulation, LocalStorage API, and Asynchronous logic.
+## 🧠 Technical Highlights
+- **SVG Math**: Circumference calculation and `stroke-dashoffset` manipulation for the circular progress effect
+- **Timer Safety**: Managing timer IDs to prevent multiple instance bugs
 
-## 🧠 What I Learned / Challenges
-
-- **SVG Math**: Calculating the circumference ($2 \times \pi \times r$) and manipulating `stroke-dashoffset` to create the circular progress effect.
-- **Logic Refactoring**: Managing timer IDs to prevent "multiple instance" bugs where the timer runs faster than intended.
-- **UX Persistence**: Implementing `localStorage` to ensure a seamless experience across browser refreshes.
-
-## 🏁 How to Run
-
-1. Clone the repository.
-2. Open `index.html` in any modern web browser.
-3. Set your preferred focus/break times and start being productive!
-
-## Author
+## 👤 Author
 Nico Periz
