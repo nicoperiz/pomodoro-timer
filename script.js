@@ -101,9 +101,6 @@ resetBtn.addEventListener('click', () => {
 workInput.addEventListener('change', saveSettings);
 breakInput.addEventListener('change', saveSettings);
 
-loadSettings();
-initTimer();
-
 const darkToggle = document.getElementById('dark-toggle');
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
@@ -117,3 +114,6 @@ darkToggle.addEventListener('click', () => {
   darkToggle.textContent = isDark ? '☀️ Light' : '🌙 Dark';
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
+
+loadSettings();
+initTimer();

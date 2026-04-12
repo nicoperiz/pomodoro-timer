@@ -1,6 +1,6 @@
 :root {
   --primary-color: #ff6b6b;
-  --bg-color: #f0f2f5;
+  --bg-color: #dde0e5;
   --text-color: #2d3436;
   --work-color: #42da70;
   --break-color: #0984e3;
@@ -108,7 +108,7 @@ button {
 
 button:active { transform: scale(0.95); }
 .btn-start { background-color: var(--work-color); color: white; }
-.btn-reset { background-color: #fab1a0; color: white; }
+.btn-reset { background-color: #e74c3c; color: white; }
 
 .status-work { color: var(--work-color); }
 .status-break { color: var(--break-color); }
@@ -156,4 +156,8 @@ body.dark .settings input {
 body.dark .dark-toggle {
   border-color: #cdd6f4;
   color: #cdd6f4;
+}
+
+body.dark .settings input {
+  color-scheme: dark;
 }
