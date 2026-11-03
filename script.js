@@ -69,6 +69,12 @@ function switchMode() {
 
 function startTimer() {
   if (timerId !== null) return; // Prevent multiple instances
+
+  // Save state to localStorage
+  localStorage.setItem('isRunning', 'true');
+  localStorage.setItem('endTime', Date.now() + timeLeft * 1000);
+  localStorage.setItem('isWorkMode', isWorkMode ? 'true' : 'false');
+
   timerId = setInterval(() => {
     timeLeft--;
     updateDisplay();
@@ -81,23 +87,55 @@ function startTimer() {
   }, 1000);
 }
 
-startBtn.addEventListener('click', startTimer);
-
-pauseBtn.addEventListener('click', () => {
+function pauseTimer() {
   clearInterval(timerId);
   timerId = null;
-});
+  localStorage.removeItem('isRunning');
+}
 
-resetBtn.addEventListener('click', () => {
+function resetTimer() {
   clearInterval(timerId);
   timerId = null;
   isWorkMode = true;
   statusText.textContent = "Work Session";
   statusText.className = "";
   circle.style.stroke = "var(--work-color)";
+  localStorage.removeItem('isRunning');
+  localStorage.removeItem('endTime');
+  localStorage.removeItem('isWorkMode');
   initTimer();
-});
+}
 
+function restoreTimer() {
+  const isRunning = localStorage.getItem('isRunning') === 'true';
+  const endTime = parseInt(localStorage.getItem('endTime'));
+  const savedWorkMode = localStorage.getItem('isWorkMode') === 'true';
+
+  if (!isRunning || !endTime) return;
+
+  // Calculate remaining time
+  const now = Date.now();
+  const remaining = Math.floor((endTime - now) / 1000);
+
+  if (remaining <= 0) {
+    // Timer already finished while away
+    localStorage.removeItem('isRunning');
+    localStorage.removeItem('endTime');
+    localStorage.removeItem('isWorkMode');
+    return;
+  }
+
+  // Resume from where it left off
+  isWorkMode = savedWorkMode;
+  timeLeft = remaining;
+  totalTime = (isWorkMode ? workInput.value : breakInput.value) * 60;
+  updateDisplay();
+  startTimer();
+}
+
+startBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', resetTimer);
 workInput.addEventListener('change', saveSettings);
 breakInput.addEventListener('change', saveSettings);
 
@@ -117,3 +155,4 @@ darkToggle.addEventListener('click', () => {
 
 loadSettings();
 initTimer();
+restoreTimer();
